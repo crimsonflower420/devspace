@@ -10,12 +10,14 @@ export default (req, res) => {
   } else {
     const files = fs.readdirSync(path.join("posts"))
     posts = files.map((filename) => {
+      const slug = filename.replace(".md", "")
       const markdownWithMeta = fs.readFileSync(
         path.join("posts", filename),
         "utf-8"
       )
       const { data: frontmatter } = matter(markdownWithMeta)
       return {
+        slug,
         frontmatter,
       }
     })
@@ -28,5 +30,6 @@ export default (req, res) => {
       category.toLowerCase().indexOf(req.query.q) != -1
   )
 
+  console.log({ results })
   res.status(200).json(JSON.stringify({ results }))
 }
