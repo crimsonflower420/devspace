@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout"
 import Post from "@/components/Post"
 import { getPosts } from "@/lib/posts"
+import { POSTS_ON_FRONT_PAGE } from "@/config/index"
 
 function HomePage({ posts }) {
   return (
@@ -20,6 +21,6 @@ export default HomePage
 
 export async function getStaticProps() {
   return {
-    props: { posts: getPosts().slice(0, 6) },
+    props: { posts: getPosts().slice(0, POSTS_ON_FRONT_PAGE) },
   }
 }
