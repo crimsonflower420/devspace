@@ -13,7 +13,7 @@ const Layout = ({ title, keywords, description, children }) => {
       <Header />
       <SearchBar />
 
-      <main className='container mx-auto my-7'>{children}</main>
+      <main className='container bg-yellow mx-auto my-7'>{children}</main>
     </div>
   )
 }
